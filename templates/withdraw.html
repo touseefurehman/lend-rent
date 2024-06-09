@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  <div style="min-height: 60vh;">
+  <h1>Withdraw</h1>
+  <div class="text-center mt-5 mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center mt-5">
+      <img src="{% static 'image/nav/withdraw.png' %}" alt="Withdrawal Image">
+      <h2 class="text-center">No Withdrawal yet</h2>
+      <div>
+        <p class="text-center" style="max-width: 500px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore labore et dolore labore et dolore magna aliqua.</p>
+      </div>
+
+
+      <form method="post">
+        {% csrf_token %}
+              <section class="section">
+                <div class="container">
+                  <button class="button is-primary" style="background: #005494;
+                  " class="btn btn-primary mt-3" id="submitBtn">Purchase!</button>
+                </div>
+              </section>
+      </form>
+
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}

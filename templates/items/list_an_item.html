@@ -1,0 +1,165 @@
+{% extends "base.html" %} 
+{% load static %}
+ {% block content %}
+
+
+
+
+
+
+
+
+
+ <div class="container mt-5">
+    <h1>List an item</h1>
+
+    <form action="" method="POST"  enctype="multipart/form-data"> {% csrf_token %} <div class="row">
+        <div class="content">
+        <div class="row">
+            <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-6">
+                                <div>
+                                <label for="title" class="form-label title-label">Title</label>
+                                <input type="text" maxlength="60" class="form-control" id="title" name="title" required>
+                                </div>
+
+                                <div>
+                                    <div class="mb-3">
+                                        <label class="form-label rental-label">Rental price (HKD)</label>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="daily" class="form-label category-label">Daily</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                      <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input type="number" class="form-control" id="daily" name="daily" step="1" min="1" pattern="[0-9]*" required>
+                                                  </div>                                            </div>
+                                            <div class="col">
+                                                <label for="weekly" class="form-label category-label">Weekly</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                      <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input type="number" class="form-control" id="weekly" name="weekly" step="1" min="1" pattern="[0-9]*" required>
+                                                  </div>                                            </div>
+                                            <div class="col">
+                                                <label for="monthly" class="form-label category-label">Monthly</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                      <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input type="number" class="form-control" id="monthly" name="monthly" step="1" min="1" pattern="[0-9]*" required>
+                                                  </div>
+                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                            `   </div>
+                                <div class="mb-3">
+                                    <label for="rentalPeriod" class="form-label period-label">Minimum rental period
+                                        (Days)</label>
+
+                                    <input type="number" class="form-control" id="rentalPeriod" name="rentalPeriod"  pattern="[0-9]*" step="1" min="1" required>
+                                </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <div>
+                                    <label for="category" class="form-label category-label">Category</label>
+                                    <select class="form-control" name="ItemCategory" id="category" required>
+                                        {% for category in items_categories %}
+                                            <option name="" value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                                     </div>
+                            <div>
+                                <div class="mb-3 mt-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="marketValue" class="form-label value-label">Market value
+                                                (HKD)</label>
+                                            <input type="number" name="marketValue" class="form-control" step="1" min="1" id="marketValue" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="quantity" class="form-label value-label">Quantity</label>
+                                            <input type="number"  name="quantity" class="form-control" step="1" min="1" id="quantity" pattern="[0-9]*" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 mt-5">
+                                <label for="location"  class="form-label location-label">Location</label>
+                                <input type="text" name="location" class="form-control" id="location" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            
+
+
+
+                            <label for="profileDescription"  class="form-label description-label">Description</label>
+                            <textarea class="form-control" name="profileDescription" id="profileDescription" rows="7" maxlength="700" required></textarea>
+                            
+                        </div>
+                    
+
+                    </div>
+            </div>
+                
+            <div class="col-lg-4">
+                <div class="show" style="color:rgba(196, 196, 196, 1); border: 3px dotted rgba(196, 196, 196, 1);border-radius: 12px; padding: 100px;" >
+
+
+
+
+
+                    <label class="text-center"  for="upload_img"> Upload Image </label>
+                    <input type="file" id="upload_img" hidden name="image" accept="image/*" required>
+
+                </div>
+
+
+
+                
+
+
+
+
+
+
+
+            </div>
+        </div>
+    
+
+     
+            <button type="submit"  style="float: right; width:198px;height:60px;border-radius:16px;background:rgba(0, 84, 148, 1);" class="btn inbox-button" id="editProfileButton">
+                <h1 style="font-family:Poppins;color:white;font-size:18px;font-weight:600;margin:0;">
+                    List and earn
+                </h1>
+            </button>
+  
+</form>
+
+
+
+</div></div>
+</div>
+<div class="mb-4"></div>
+
+
+
+
+
+
+
+
+
+
+
+ {% endblock %}

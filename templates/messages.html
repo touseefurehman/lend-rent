@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+
+ 
+  <div class="notification_box messages_box" style="height: 500px;">
+    <div class="row justify-content-center" style="height:100%">
+      <div class="col-lg-3 col-md-3 lefcol">
+        <div class="msg_search">
+            <div class="msg_search_form">
+                <form action="" method="GET">
+                    <input type="search" name="search_input" placeholder="Search" id="">
+                    <input type="submit" name="search" id="" style="display:none;">
+                </form>
+            </div> {% if chat_users %} {% for chat_usr in chat_users %} <a
+                href="{% url 'chat_to_user' chat_usr.id %}" style="text-align: left;
+                                            text-decoration: none;">
+                <div class="msg_person" sid="{{chat_usr.id}}">
+                    <div class="msg_left">
+                        <div class="sender_img">
+                            <img src="{% if chat_usr.profile_img %}{{chat_usr.profile_img.url}}{% else %}{% static 'assets/img/dummy.jpeg' %}{% endif %}"
+                                alt="">
+                        </div>
+                        <div class="sender_info">
+                            <p>{% if chat_usr.name %}{{chat_usr.name}}{% else %}no name{% endif %}</p>
+                            <h6>{{chat_usr.message}}...</h6>
+                        </div>
+                    </div>
+                    <div class="sender_notification_time">
+                        <p>{{chat_usr.time.time}}</p>
+                        <h6>{% if chat_usr.unread_messages %}{{chat_usr.unread_messages}}{% endif %}</h6>
+                    </div>
+                </div>
+            </a> {% endfor %} {% else %} <p>no user</p> {% endif %}
+        </div>
+    </div>
+      <div class="col-lg-8 col-md-8">
+        <div class="open_chat" style="    display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     width: 100%;
+                     height: 100%;">
+          <div class="user_profile">
+            <img src="{% static 'assets/' %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+
+</div>
+<!-- js -->
+
+{{group_id|json_script:"group_id"}}
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+
+
+{% endblock %}

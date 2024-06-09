@@ -1,0 +1,100 @@
+
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+ <style>
+    .nav-tabs .nav-link {
+      border: none;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-tabs .nav-link.active {
+      border-color: #007bff;
+    }
+  </style>
+                    <div class="container mt-5">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">MY items</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Tab 2</a>
+                        </li>
+                        </ul>
+                        <div class="tab-content mt-2" id="myTabContent">
+                        <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                            <div class="container mt-5">
+                            {% for rental_item in rental_items %}
+                                <div class="row mt-5 ">
+                                    <div class="col-lg-4 col-md-4">
+                                        {% if rental_item.image %}
+                                        <img  src="{{ MEDIA_URL }}{{ rental_item.image.url }}" class="card-img-top img_my_rental" alt="...">
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
+                                        <p class="card-text custom-card-description">{{ user_profile.name }}</p>
+                                        <h5 class="card-title custom-card-title">{{ rental_item.title }}</h5>
+                                        <p class="card-text custom-card-description" >{{ rental_item.description }}</p>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
+                                        <div style="text-align: right;">
+                                            <p>{{ rental_item.location }}</p>
+                                            <p style="font-weight: 900;">${{ rental_item.daily_price }}</p>
+                                            <div class="row">
+                                            <div class="col-md-6">
+
+
+
+
+
+
+
+
+                                                <form method="POST" action="{% url 'delete_item' item_id=rental_item.id %}">
+                                                {% csrf_token %}
+                                                <a style="text-decoration: none;color: white;" href="{% url 'my_item' %}">
+                                                    <button type="submit" class="delect_item_my_items"  class="btn inbox-button" id="editProfileButton">
+                                                        <h1 class="my_item_delect_item">
+                                                                                        Delect Items                                                      </h1>
+                                                    </button></a></form>
+                                            </div>                                         
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <div class="col-md-6">
+                                                <a href="{% url 'edit_item' item_id=rental_item.id %}">
+
+                                                    <button class="button_my_item" class="btn inbox-button" id="editProfileButton">
+                                                        <h1 class="h1_my_items_edit">
+                                                                edit items
+                                                        </h1>
+                                                    </button></a>
+                                        </div></div>
+                                    </div>
+                                </div>
+                                </div>
+                                 {% endfor %}
+                        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                 
+
+
+<div class="mt-5"></div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  {% endblock %}

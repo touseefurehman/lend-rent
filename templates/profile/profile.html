@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+ {% load static %} 
+ {% block content %} <div class="container mb-5">
+    <div class="row">
+        <div class="col-md-3 profile-container">
+            <div>
+                <h1 class="mt-5 profile-heading">Profile Details</h1>
+            </div>
+            <div class="text-center">
+                <div class="container d-flex justify-content-center align-items-center ">
+                    <div class="text-center">
+                        <div class="profile-image mt-5">
+                            
+                            <img class="img1 profile-preview-image" id="preview_image" src="{{ request.user.profile_img.url }}" alt="Profile Image">
+
+                        </div>
+                        <input type="file" id="upload-input" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                <h1 class="profile-name">{{ user.name }}</h1>
+                <h2 class="profile-email">{{ user.email }}</h2>
+            </div>
+            <div>
+                <h1 class="mt-5 profile-statistics">Your statistics</h1>
+                <a href="#" style="text-decoration: none; color: rgb(0, 0, 0);">
+                <div class="profile-box">
+                    <h2 class="profile-statistics-value">$0.00</h2>
+                    <div class="profile-row">
+                     
+                            <div>
+                                <h1 class="profile-statistics-info">Lifetime earnings</h1>
+                            </div>
+                            <div>
+                                <img class="profile-coin" src="{% static 'image/nav/coin.png' %}" alt>
+                            </div>
+                        
+                    </div></a>
+                </div></a>
+                <div class="row mt-2">
+                    <div class="col-6">
+                        <div class="profile-column">
+                            <h1 class="profile-number">0</h1>
+                            <h2 class="profile-statistics-number">Rental</h2>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="profile-column">
+                            <h1 id="#" class="profile-number">{{ user.days_since_creation }}</h1>
+                            <h2 class="profile-statistics-number">Day with us</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-6">
+                        <a style="text-decoration: none;color: black;" href="{% url 'my_item' %}">
+                        <div class="profile-column">
+                            <h1 class="profile-number">0</h1>
+                            <h2 class="profile-statistics-number">Lend</h2>
+                        </div></a>
+                    </div>
+                    <div class="col-6">
+                        <div class="profile-column">
+                            <h1 class="profile-number">0</h1>
+                            <h2 class="profile-statistics-number">Unread message</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="profileContent" class="col-md-9 mt-5 profile-content">
+            <div class="top_button">
+                <div class="inbox d-flex justify-content-between ">
+                    <div>
+                        <a class="profile-link" href="{% url 'list_an_item' %}">
+                            <button class="  earn-button profile-button">
+                                <h1 class="profile-button-text">List and earn</h1>
+                            </button>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="profile-link" href="{% url 'edit_profile' %}">
+                            <button class=" inbox-button profile-button">
+                                <h1 class="profile-button-text">Edit Profile</h1>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="formss mt-5 profile-form"
+                style="border:1px solid rgba(234, 234, 234, 1);border-radius:10px;padding:30px;">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label profile-label">First Name</label>
+                            <input value="{{ user.name }}" type="text" class="form-1 profile-input" readonly id="firstName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailAddress" class="form-label profile-label">Email Address</label>
+                            <input value="{{ user.email }}" type="text" class="form-1 profile-input" readonly id="emailAddress" block>
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="form-label profile-label">Location</label>
+                            <input type="text" value="{% if user.location %}{{ user.location }}{% else %}  {% endif %}" class="form-1 profile-input" readonly id="location">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label profile-label">Last Name</label>
+                            <input type="text" class="form-1 profile-input" value="{{ user.last_name }}" readonly id="lastName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label profile-label">Phone Number</label>
+                            <input type="text" class="form-1 profile-input" value="{% if user.mobile_number %}{{ user.mobile_number }}{% else %}  {% endif %}" readonly id="phoneNumber">
+                        </div>
+                    </div>
+                </div>
+                <div class="describation">
+                    <div class="mb-3">
+                        <label for="profileDescription" class="form-label profile-label">Profile Description</label>
+                        <textarea class="form-control profile-textarea" id="profileDescription" rows="7" readonly 
+                            maxlength="200"> {% if user.about_me %}{{ user.about_me }}{% else %}  {% endif %}</textarea>
+                        <div id="wordCount" class="form-text">0/200 words</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+      
+        </div> {% endblock %}

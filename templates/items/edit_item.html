@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block content %} 
+<form method="POST"> 
+    {% csrf_token %}
+    <div class="container mt-5">
+        <div class="new_item mt-5">
+            <div>
+                <div style="display: flex;">
+                    <h1> My Rentals</h1>
+                    <h1 style="margin-left: 10px; color: black;"> items</h1>
+                </div>
+            </div>
+            <button type="submit" class="btn smbut btn-primary">Save</button>
+            <hr>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row mt-5">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label title-label">Title</label>
+                                <input type="text" class="form-control" name="title" value="{{ rental_item.title }}"
+                                    id="firstName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="rentalPrice" class="form-label rental-label">Rental price (HKD)</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="category" class="form-label category-label">daily</label>
+                                          <input type="number" class="form-control" id="daily" value="{{ rental_item.daily_price }}" name="daily" step="1" min="1" pattern="[0-9]*" required>
+
+                                       
+                                    </div>
+                                    <div class="col">
+                                        <label for="category" class="form-label category-label">weekly</label>
+                                            <input type="number" class="form-control" id="daily" value="{{ rental_item.weekly_price }}" name="weekly" step="1" min="1" pattern="[0-9]*" required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="category" class="form-label category-label">monthly</label>
+                                     
+                                            <input type="number" class="form-control" id="monthly" value="{{ rental_item.monthly_price }}" name="weekly" step="1" min="1" pattern="[0-9]*" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="rentalPeriod" class="form-label period-label">Minimum rental period
+                                    (Days)</label>
+                                <input type="text" class="form-control" name="rental_period"
+                                    value="{{ rental_item.rental_period }}" id="rentalPeriod">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="mb-3">
+                                <label for="category" class="form-label category-label">Category</label>
+                                <input type="text" class="form-control" name=""
+                                    value="{{ rental_item.category }}" id="category">
+                            </div>
+                            <div class="mb-3">
+                                <div class="row mt-5">
+                                    <div class="col">
+                                        <label for="marketValue" class="form-label value-label">Market value
+                                            (HKD)</label>
+                                        <input type="text" class="form-control" name="market_value"
+                                            value="{{ rental_item.market_value }}" id="marketValue">
+                                    </div>
+                                    <div class="col">
+                                        <label for="marketValue" class="form-label value-label">Quantity</label>
+                                        <input type="text" class="form-control" name="quantity"
+                                            value="{{ rental_item.quantity }}" id="marketValue" pattern="[0-9]*">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="location" class="form-label location-label">Location</label>
+                                <input type="text" class="form-control" name="location"
+                                    value="{{ rental_item.location }}" id="location">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="describation">
+                        <div class="mb-3">
+                            <label for="profileDescription" class="form-label description-label">Description</label>
+                            <textarea class="form-control" name="description" value="{{ rental_item.description }}"
+                                id="profileDescription" rows="7" maxlength="200"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

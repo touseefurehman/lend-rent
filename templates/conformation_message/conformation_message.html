@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5" style="max-width: 400px; height: 700px;">
+
+<div class="center"style="text-align: center;">
+<img src="{% static 'image/nav/confirm.png' %}" style="height: 100px; width: 100px;" alt="">
+
+</div>
+
+<div style="text-align: center;">
+
+<h1 class="center" style=" font-size: large; color: rgba(150, 150, 150, 1);
+">Thank you for making the Earth a better place by using Elephant Please. The lender should contact you soon. If they don't, send them a reminder.</h1>
+
+
+</div>
+
+
+
+<div style="margin-top: 100px;">
+<a href="">
+    <div class="butoon gap-5" style="display: flex;">           
+    <button style="max-width:198px;max-height:60px;border-radius:16px;background:rgba(0, 84, 148, 1);" class="btn inbox-button" id="editProfileButton">
+        <h1 style="font-family:Poppins;color:white;font-size:18px;font-weight:600;margin:0;">
+            Rent More
+        </h1>
+    </button>
+</a>
+<a href="">
+    <button style="max-width:198px;max-height:60px;border-radius:16px;background:rgba(0, 84, 148, 1);" class="btn inbox-button" id="editProfileButton">
+        <h1 style="font-family:Poppins;color:white;font-size:18px;font-weight:600;margin:0;">
+           Lend an item
+        </h1>
+    </button>
+</a>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

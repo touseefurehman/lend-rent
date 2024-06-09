@@ -1,0 +1,430 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="links mt-4" style="display: flex;">
+        <div>
+            <a class="pdp-a" href="{% url 'rent' %}" style="text-decoration: none; 
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(109, 109, 109, 1);
+
+            ">Home</a>
+            <i class="bi bi-chevron-right" style="color: rgba(109, 109, 109, 1);"></i>
+            <a href="{% url 'search_by_category' Category_of_items.id %}" style="text-decoration: none;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color:  rgba(109, 109, 109, 1);
+        ;">{{ Category_of_items.name }}</a>
+        </div>
+        <div>
+            <i class="bi bi-chevron-right" style="color: rgba(109, 109, 109, 1);"></i>
+            <a href="#" style="text-decoration: none;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(0, 84, 148, 1)
+        ;">{{ rental_item.title|slice:":10" }}{% if rental_item.title|length > 15 %}...{% endif %}</a>
+            </p>
+        </div>
+    </div>
+    <div class="deatails">
+        <div class="row">
+            <div class="col-lg-7 col-sm-12"> {% if rental_item.image %} <img
+                    src="{{ MEDIA_URL }}{{ rental_item.image.url }}"
+                    style=" max-width: 100%; max-height: 100%;height:400px ;border-radius: 16px;object-fit: cover;" class="card-img-top img-cards1"
+                    alt="..."> {% endif %} <div>
+                </div>
+            </div>
+            <div class="col-lg-5 mt-4 col-sm-12">
+                <div class="pdp-container">
+                    <div class="pdp-inner">
+                        <h1 class="pdp-title">{{ rental_item.title }}</h1>
+                        <p class="pdp-address">{{ rental_item.location }}</p>
+                    </div>
+                    <a style="text-decoration: none;" href="{% url 'chat_to_user' rental_item.user.id %}">
+
+                        <div class="pdp-info">
+                            <img src=" {{ rental_item.user.profile_img.url }}" style="border-radius: 50%; height:25px;width:25px;" alt="Profile Image">
+
+                            <h1 class="pdp-name">{{ rental_item.user.name }}</h1>
+                            <img  src="{% static 'image/nav/Side Nav icons.png' %}" alt="">
+                        </div>
+                </a>
+            </a>
+                    <div class="pdp-rating">
+                        <img src="{% static 'image/nav/star_rate.png' %}" alt="" width="20px" height="20px">
+                        <p class="pdp-rating-value" max="3">{% if average_rating %}{{ average_rating }}{% else %}  {% endif %}</p>
+                        <p class="pdp-rating-reviews">({{comment_count}} reviews)</p>
+                        <a href="#pills-profile-tab" style="text-decoration: none;color: #005494;"><p>Write a review</p></a>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-lg-4 col-sm-4 mt-1 ">
+                            <div class="pdp-price-container">
+                                <p class="pdp-price-type">Daily</p>
+                                <p class="pdp-price-value"><span>${{ rental_item.daily_price }}</span>/Day</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4 mt-1 ">
+                            <div class="pdp-price-container">
+                                <p class="pdp-price-type">Weekly</p>
+                                <p class="pdp-price-value"><span>${{ rental_item.weekly_price }}</span>/Weekly</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4 mt-1">
+                            <div class="pdp-price-container">
+                                <p class="pdp-price-type">Monthly</p>
+                                <p class="pdp-price-value"><span>${{ rental_item.monthly_price }}</span>/Monthly</p>
+                            </div>
+                        </div>
+
+   
+        
+
+                            <button id="checkBtn" type="button" style='width: 100%;'
+                                class="btn btn-primary mt-2 pdp-check-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> Check price and availability
+                            </button>
+<!-- this is for pop up of claender  -->
+                        <div id="calendar">
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+
+                                   
+                                      
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form  method="GET" action="{% url 'checkout'   Category_of_items.id rental_item.id %}">
+                                                <label for="fromDate">From:</label><br><br>
+                                                <input type="date" id="fromDate" name="fromDate" required> <br><br>
+                                                <label for="toDate">To:</label><br><br>
+                                                <input type="date" id="toDate" name="toDate" required><br><br>
+                                            </div>
+                                            <script>
+                                                // Get references to the date input fields
+                                                var fromDateInput = document.getElementById("fromDate");
+                                                var toDateInput = document.getElementById("toDate");
+                                            
+                                                // Get the current date
+                                                var today = new Date();
+                                                var dd = String(today.getDate()).padStart(2, '0');
+                                                var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+                                                var yyyy = today.getFullYear();
+                                                var currentDate = yyyy + '-' + mm + '-' + dd;
+                                            
+                                                // Set the minimum date for both fields to today
+                                                fromDateInput.min = currentDate;
+                                                toDateInput.min = currentDate;
+                                            
+                                                // Add event listener to fromDate field
+                                                fromDateInput.addEventListener('change', function () {
+                                                    // Set the minimum date for toDate field to the selected fromDate
+                                                    toDateInput.min = fromDateInput.value;
+                                                });
+                                            
+                                                // Add event listener to toDate field
+                                                toDateInput.addEventListener('change', function () {
+                                                    // Set the maximum date for fromDate field to the selected toDate
+                                                    fromDateInput.max = toDateInput.value;
+                                                });
+                                            </script>
+
+
+
+
+
+                                            <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">continue</button>
+
+                                            </form>                                 
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+<!-- ENd for pop up of claender  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-lg-7 col-md-12 mt-3">
+                    <div class="pdp_tabs_main_div">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">Description</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button  class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                    aria-selected="false">Reviews</button>
+                            </li>
+                        </ul>
+
+
+
+
+
+
+
+                        <div class="tab-content" id="pills-tabContent" style="max-height: 300px;overflow-x: auto;">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                aria-labelledby="pills-home-tab">
+                                <p class="pdp-paragraph">{{ rental_item.description }} </p>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="tab-pane fade " id="pills-profile" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <form method="POST"> {% csrf_token %} 
+                                    <div style="display: flex;padding: 10px;">
+                                        <label for="profileDescription" class="form-label profile-label">Add review</label>
+                                        <textarea class="form-control profile-textarea" name="comment"
+                                            id="profileDescription" rows="1" maxlength="1000" required></textarea>
+                                    </div>
+                                    <style>
+
+                                        .rate.cursor_non{
+                                            pointer-events:none;
+                                            
+                                        }
+
+                                        *{
+                                            margin: 0;
+                                            padding: 0;
+                                        }
+                                        .rate {
+                                            float: left;
+                                            height: 46px;
+                                            padding: 0 10px;
+                                        }
+                                        .rate:not(:checked) > input {
+                                            position:absolute;
+                                            top:-9999px;
+                                        }
+                                        .rate:not(:checked) > label {
+                                            float:right;
+                                            width:1em;
+                                            overflow:hidden;
+                                            white-space:nowrap;
+                                            cursor:pointer;
+                                            font-size:30px;
+                                            color:#ccc;
+                                        }
+                                        .rate:not(:checked) > label:before {
+                                            content: '★ ';
+                                        }
+                                        .rate > input:checked ~ label {
+                                            color: #ffc700;    
+                                        }
+                                        .rate:not(:checked) > label:hover,
+                                        .rate:not(:checked) > label:hover ~ label {
+                                            color: #deb217;  
+                                        }
+                                        .rate > input:checked + label:hover,
+                                        .rate > input:checked + label:hover ~ label,
+                                        .rate > input:checked ~ label:hover,
+                                        .rate > input:checked ~ label:hover ~ label,
+                                        .rate > label:hover ~ input:checked ~ label {
+                                            color: #c59b08;
+                                        }
+                                        
+                                        /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+                                    </style>
+
+                                    <div class="stars">
+                                        <div class="rate">
+                                            <input type="radio" id="star5" name="rate" value="5" />
+                                            <label for="star5" title="text">5 stars</label>
+                                            <input type="radio" id="star4" name="rate" value="4" />
+                                            <label for="star4" title="text">4 stars</label>
+                                            <input type="radio" id="star3" name="rate" value="3" />
+                                            <label for="star3" title="text">3 stars</label>
+                                            <input type="radio" id="star2" name="rate" value="2" />
+                                            <label for="star2" title="text">2 stars</label>
+                                            <input type="radio" id="star1" name="rate" value="1" />
+                                            <label for="star1" title="text">1 star</label>
+                                          </div>
+                                    </div>
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div style="padding: 10px;">
+                                        <button type="submit"  style=" float: right;background: #005494;"
+                                            class="btn mt-1 mb-5 addbutton btn-primary">comment</button>
+                                    </div>
+                                </form>
+                                {% for comment in comments %} 
+                                <div> 
+                                    <div style="width: 100%; display: 
+                                    flex;" class="mt-5" >
+                                       <div> <img class="img1 profile-preview-image"
+                                        style="height: 54px;border-radius: 50%;  width: 54px;" id="preview_image"
+                                        src="{{ comment.user.profile_img.url }}" alt="..">
+                                    </div>
+                                        <div class="p-2" >
+                                            <p style="font-size: large;">@{{ comment.user.name }}</p>
+                                            <p style="color: #005494;font-weight: 900;"> {{ comment.content }}</p>
+                                            <div class="stars">
+                                                <div class="rate cursor_non" id="rate-{{ comment.id }}">
+                                                    <input type="radio" id="star5-{{ comment.id }}" name="rate-{{ comment.id }}" value="5" {% if comment.rating == 5 %}checked{% endif %}/>
+                                                    <label for="star5-{{ comment.id }}" title="text">5 stars</label>
+                                                    <input type="radio" id="star4-{{ comment.id }}" name="rate-{{ comment.id }}" value="4" {% if comment.rating == 4 %}checked{% endif %}/>
+                                                    <label for="star4-{{ comment.id }}" title="text">4 stars</label>
+                                                    <input type="radio" id="star3-{{ comment.id }}" name="rate-{{ comment.id }}" value="3" {% if comment.rating == 3 %}checked{% endif %}/>
+                                                    <label for="star3-{{ comment.id }}" title="text">3 stars</label>
+                                                    <input type="radio" id="star2-{{ comment.id }}" name="rate-{{ comment.id }}" value="2" {% if comment.rating == 2 %}checked{% endif %}/>
+                                                    <label for="star2-{{ comment.id }}" title="text">2 stars</label>
+                                                    <input type="radio" id="star1-{{ comment.id }}" name="rate-{{ comment.id }}" value="1" {% if comment.rating == 1 %}checked{% endif %}/>
+                                                    <label for="star1-{{ comment.id }}" title="text">1 star</label>
+                                                </div>
+
+
+
+                                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        $('.rate input').change(function() {
+                                                            var rating = $(this).val();
+                                                            var commentId = $(this).closest('.rate').attr('id').split('-')[1]; // Extract comment ID
+                                                            // Send an AJAX request to update the rating for the corresponding comment
+                                                            $.ajax({
+                                                                type: 'POST',
+                                                                url: '/update_rating/', // Adjust the URL to your endpoint for updating ratings
+                                                                data: {
+                                                                    'comment_id': commentId,
+                                                                    'rating': rating
+                                                                },
+                                                                success: function(response) {
+                                                                    // Handle success if needed
+                                                                },
+                                                                error: function(xhr, status, error) {
+                                                                    // Handle error if needed
+                                                                }
+                                                            });
+                                                        });
+                                                    });
+                                                </script>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>                                
+                                </div>
+                                {% endfor %}   
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+
+
+
+
+
+
+            
+            <div class="paragraph mt-5">
+            </div>
+            <div class="mapss">
+                <div class="mt-5 mb-5" style="max-width: 700px;">
+                    <h1 style="font-family: Montserrat;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 38px;
+            text-align: left;
+            ">Address</h1>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54439.22404009505!2d74.25565838813783!3d31.484271231452443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903ee86619e19%3A0x1df20c73e9c6c4f3!2sJinnah%20Hospital!5e0!3m2!1sen!2s!4v1713532783609!5m2!1sen!2s"
+                        height="450" style="border:0;width: 100%;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
+
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  {% endblock %}

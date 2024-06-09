@@ -1,0 +1,165 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %} 
+<form action="" method="post" enctype="multipart/form-data" >
+{% csrf_token %}
+    
+    
+            <div class="container mb-5">
+                <div class="row">
+                    <div class="col-md-3 profile-container">
+                        <div>
+                            <h1 class="mt-5 profile-heading">Profile Details</h1>
+                        </div>
+                        <div class="text-center">
+                            <div class="container d-flex justify-content-center align-items-center ">
+                                <div class="text-center">
+                                    <div class="profile-image mt-5">
+                                        <label for="profile-picture-input">
+
+                                            <img class="img1 profile-preview-image" id="preview_image" src="{{ request.user.profile_img.url }}"
+                                                alt="Profile Picture">
+                                            </label>
+                                                <input type="file" name="image" id="profile-picture-input" style="display: none;" accept="image/*">
+                                    </div>
+                                    
+                                    <input type="file" id="upload-input" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                            <h1 class="profile-name">{{ user.name }}</h1>
+                            <h2 class="profile-email">{{ user.email }}</h2>
+                        </div>
+                        <div>
+                            <h1 class="mt-5 profile-statistics">Your statistics</h1>
+                            <div class="profile-box">
+                                <h2 class="profile-statistics-value">$0.00</h2>
+                                <div class="profile-row">
+                                    <a href="#" style="text-decoration: none;">
+                                        <div>
+                                            <h1 class="profile-statistics-info">Lifetime earnings</h1>
+                                        </div>
+                                        <div>
+                                            <img class="profile-coin" src="{% static 'image/nav/coin.png' %}" alt>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <div class="profile-column">
+                                        <h1 class="profile-number">0</h1>
+                                        <h2 class="profile-statistics-number">Rental</h2>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="profile-column">
+                                        <h1 class="profile-number">0</h1>
+                                        <h2 class="profile-statistics-number">Day with us</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <a style="text-decoration: none;color: black;" href="{% url 'my_item' %}">
+                                    <div class="profile-column">
+                                        <h1 class="profile-number">0</h1>
+                                        <h2 class="profile-statistics-number">Lend</h2>
+                                    </div></a>
+                                </div>
+                                <div class="col-6">
+                                    <div class="profile-column">
+                                        <h1 class="profile-number">0</h1>
+                                        <h2 class="profile-statistics-number">Unread message</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+
+
+
+
+
+
+
+                    <div id="profileContent" class="col-md-9 mt-5 profile-content">
+                        <div class="top_button">
+                            <div class="inbox d-flex justify-content-between ">
+                                <div>
+                                <a class="profile-link" href="{% url 'forgotPassword' %}">
+                                <div>
+                                        <button class=" inbox-button profile-button">
+                                            <h1 class="profile-button-text">Reset</h1>
+                                        </button>
+                                    </div>
+                                </a>
+                            </div>
+                                <div>
+                                    <a class="profile-link" href="{% url 'profile' %}">
+                                        <button type="submit" class=" inbox-button profile-button">
+                                            <h1 class="profile-button-text">save</h1>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="formss mt-5 profile-form"
+                            style="border:1px solid rgba(234, 234, 234, 1);border-radius:10px;padding:30px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="mb-3">
+                                        <label for="firstName" class="form-label profile-label">First Name</label>
+                                        <input type="text" name='name' value="{{ user.name }}" class="form-1 profile-input" id="firstName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="emailAddress" class="form-label profile-label">Email Address</label>
+                                        <input type="text" class="form-1 profile-input" id="emailAddress" name='email' value="{{ user.email }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="location" class="form-label profile-label">Location</label>
+                                        <input type="text" class="form-1 profile-input" id="location" name='location' value="{{ user.location }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="mb-3">
+                                        <label for="lastName" class="form-label profile-label">Last Name</label>
+                                        <input type="text" class="form-1 profile-input" value="{{ user.last_name }}" name="last_name" id="lastName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phoneNumber" class="form-label profile-label">Phone Number</label>
+                                        <input type="text" class="form-1 profile-input" value="{{ user.mobile_number }}"  name="number" id="phoneNumber">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="describation">
+                                <div class="mb-3">
+                                    <label for="profileDescription" class="form-label profile-label">Profile Description</label>
+                                    <textarea class="form-control profile-textarea" id="profileDescription" name="about" rows="7"
+                                        >{{ user.about_me }}</textarea>
+                                </div>
+                            </div>
+                        </div></div></div></div>
+                    </div>
+                    
+        
+
+</form>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        {% endblock %}

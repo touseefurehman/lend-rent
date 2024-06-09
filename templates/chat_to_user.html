@@ -1,0 +1,339 @@
+{% extends 'base.html' %} {% load static %} {% block content %} <div class="container mb-5">
+</div>
+<div class="notification_box messages_box">
+    <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-3 lefcol">
+            <div class="msg_search">
+                <div class="msg_search_form">
+                    <form action="" method="GET">
+                        <input type="search" name="search_input" placeholder="Search" id="">
+                        <input type="submit" name="search" id="" style="display:none;">
+                    </form>
+                </div> {% if chat_users %} {% for chat_usr in chat_users %} <a
+                    href="{% url 'chat_to_user' chat_usr.id %}" style="text-align: left;
+                                                text-decoration: none;">
+                    <div class="msg_person" sid="{{chat_usr.id}}">
+                        <div class="msg_left">
+                            <div class="sender_img">
+                                <img src="{% if chat_usr.profile_img %}{{chat_usr.profile_img.url}}{% else %}{% static 'assets/img/dummy.jpeg' %}{% endif %}"
+                                    alt="">
+                            </div>
+                            <div class="sender_info">
+                                <p>{% if chat_usr.name %}{{chat_usr.name}}{% else %}no name{% endif %}</p>
+                                <h6>{{chat_usr.message}}...</h6>
+                            </div>
+                        </div>
+                        <div class="sender_notification_time">
+                            <p>{{chat_usr.time.time}}</p>
+                            <h6>{% if chat_usr.unread_messages %}{{chat_usr.unread_messages}}{% endif %}</h6>
+                        </div>
+                    </div>
+                </a> {% endfor %} {% else %} <p>no user</p> {% endif %}
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="col-lg-8 col-md-8" >
+            <div class="open_chat">
+                <div class="chat_p p-2" style="background-color: #005494; border-radius: 12px;">
+                    <img id="img_src"
+                        src="{% if reciever.profile_img %}{{reciever.profile_img.url}}{% else %}{% static 'assets/img/dummy.jpeg' %}{%  endif %}"
+                        alt="">
+                    <h5 id="change_name">{% if reciever.name %}{{reciever.name}}{% else %}no name{% endif %}</h5>
+                </div>
+
+
+
+
+
+
+                <div class="scrol_box" id="scrol_bx">
+                    <div class="mesg_date">
+                        <!-- <p>15 DEC 2023</p> -->
+                    </div>
+                    <div class="msg_container" id="chat_container"> {% for chat in chats %}
+                        <!-- {{chat.sender.id}} {{request.user.id}} --> {% if chat.reciever.id == reciever.id %} <div
+                            class="rec" id="recs">
+                            <div class="rec_msg">
+                                <div class="sen_message"> {% if chat.message_image %} <a
+                                        herf="{{chat.message_image.url}}" target="_blank">
+                                        <img src="{{chat.message_image.url}}" alt="">
+                                    </a> {% else %}{% endif %} <p>{{chat.message}}</p>
+                                </div>
+                                <div class="msg_t rec_t">
+                                    <p>{{chat.timestamp.time}}</p>
+                                </div>
+                            </div>
+                        </div> {% else %} <div class="sndr_msg" id="snder_msg">
+                            <!-- {{chat.reciever.id}} {{reciever.id}} -->
+                            <div class="reciever_message">
+                                <p id="rec_mes"> {% if chat.message_image %} <a herf="{{chat.message_image.url}}"
+                                        target="_blank">
+                                        <img src="{{chat.message_image.url}}" alt="">
+                                    </a> {% else %}{% endif %} {{chat.message}} </p>
+                            </div>
+                            <div class="msg_t">
+                                <p>{{chat.timestamp.time}}</p>
+                            </div>
+                        </div> {% endif %} {% endfor %} </div>
+                </div>
+                <!-- send message -->
+                <div class="send_msg mb-5">
+                    <div class="type_msg" style="margin-right: 17px;">
+                        <img src="" alt="" id="uploadFilePreview">
+                        <!-- <input type="text" id="message" placeholder="Type your message here..."> -->
+                        <div class="mesage" style="position:relative;">
+                            <textarea  name="" id="message" placeholder="Type your message here..."></textarea>
+                            <div class="msg_emojis" id="emoji">
+                                <input type="file" style="width: 0;" name="myfile" id="choose_file"
+                                    onchange="PreviewFile();">
+                                <label for="choose_file" class="choose_img" name="myfile">
+                                    <img src="{% static 'assets/img/attach_file.png' %}" alt="" style="    position: absolute;
+                                                                    top: 7px;
+                                                                    width: 10px;
+                                                                    right: 19px;">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snd_btn">
+                        <button id="sub" type="submit"
+                            style="width:98px;height:60px;border-radius:16px;background:rgba(0, 84, 148, 1);"
+                            class="btn inbox-button" id="editProfileButton">
+                            <h1 style="font-family:Poppins;color:white;font-size:18px;font-weight:600;margin:0;"> send
+                            </h1>
+                        </button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+<!-- js --> {{group_id|json_script:"group_id"}} <!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<!-- emojis js  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.js"
+    integrity="sha512-aGWPnmdBhJ0leVHhQaRASgb0InV/Z2BWsscdj1Vwt29Oic91wECPixuXsWESpFfCcYPLfOlBZzN2nqQdMxlGTQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script>
+
+    //image converter
+    // Preview Upload File in Messages
+    function PreviewFile() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("choose_file").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadFilePreview").src = oFREvent.target.result;
+        };
+
+
+    };
+
+    // GET Current time in javascript 
+    let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" });
+
+    console.log(time)
+
+    const groupId = JSON.parse(document.getElementById('group_id').textContent)
+
+    console.log(groupId)
+
+
+    const ws = new WebSocket(
+        'ws://'
+        + window.location.host +
+        '/ws/chat/'
+        + groupId
+    );
+
+
+    ws.onopen = function (event) {
+        console.log('Web Socket Connection is Open', event)
+    }
+
+    ws.onmessage = function (event) {
+        console.log('Chat Message Recieved From Server', event)
+        mesg = JSON.parse(event.data)
+        //console.log(mesg)
+        //console.log('data:', mesg.msg, mesg.receiver_id, mesg)
+
+        if (mesg.receiver_id === groupId) {
+            if (!mesg.msg == '' && !mesg.msg_img) {
+                document.getElementById('chat_container').innerHTML += `<div class="rec" id="recs">
+                                            <div class="rec_msg">
+                                                <div class="sen_message">
+                                                    
+                                                    <p>${mesg.msg}</p>
+                                                    
+                                                </div>
+                                                <div class="msg_t rec_t">
+                                                    <p>${time}</p>
+                                                </div>
+                                            </div>
+                                        </div>`
+
+
+            }
+            else {
+
+                document.getElementById('chat_container').innerHTML += `<div class="rec" id="recs">
+                                            <div class="rec_msg">
+                                                <div class="sen_message">
+                                                    <a herf="#" target="_blank">
+                                                    <img src="data:image/png;base64, ${mesg.msg_img}" alt="image" class="message_image" />
+                                                    </a>
+                                                    <p>${mesg.msg}</p>
+                                                </div>
+                                                <div class="msg_t rec_t">
+                                                    <p>${time}</p>
+                                                </div>
+                                            </div>
+                                        </div>`
+
+
+            }
+
+        }
+        else {
+            if (!mesg.msg == '' && !mesg.msg_img) {
+                document.getElementById('chat_container').innerHTML += `   <div class="sndr_msg" id="snder_msg">
+                                                <div class="reciever_message">
+                                                <p id="rec_mes">${mesg.msg}</p>
+                                            </div>
+                                            <div class="msg_t">
+                                                <p>${time}</p>
+                                            </div>
+                                        </div>`
+            }
+            else {
+                document.getElementById('chat_container').innerHTML += `<div class="sndr_msg" id="snder_msg">
+                                                <div class="reciever_message">
+                                                <a herf="#" target="_blank">
+                                                <img src="data:image/png;base64, ${mesg.msg_img}" alt="Message Image" class="message_image"/>
+                                            </a>
+                                                <p id="rec_mes">${mesg.msg}</p>
+                                            </div>
+                                            <div class="msg_t">
+                                                <p>${time}</p>
+                                            </div>
+                                        </div>`
+            }
+        }
+
+
+        //Scroll Bottom
+        var objDiv = document.getElementById("scrol_bx");
+        objDiv.scrollTop = objDiv.scrollHeight;
+
+    }
+
+
+    ws.onerror = function (event) {
+        console.log('An Error Occured, ', event)
+    }
+
+    ws.onclose = function (event) {
+        console.log('Connection Closed  ', event)
+    }
+
+    document.getElementById('sub').onclick = function (event) {
+        const receiver_id = JSON.parse(document.getElementById('group_id').textContent)
+        console.log(receiver_id)
+        msg = document.getElementById('message')
+        msg_text = msg.value
+        console.log(msg_text)
+
+        var img = document.getElementById("uploadFilePreview");
+        if (img) {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            var dataURL = canvas.toDataURL();
+            var base64 = dataURL.split(",")[1];
+            console.log(base64);
+        }
+        else {
+            var base64 = ''
+        }
+
+        document.getElementById("uploadFilePreview").src = ''
+
+        if (!msg_text == '' || !base64 == '') {
+            ws.send(JSON.stringify({
+                'msg': msg_text,
+                'receiver_id': receiver_id,
+                'msg_img': base64,
+            }))
+            msg.value = ''
+            //
+            $("div.emojionearea-editor").data("emojioneArea").setText('');
+
+
+        }
+    }
+
+    var objDiv = document.getElementById("scrol_bx");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+
+    // Add Emojis 
+    //    $('#message').emojioneArea(); 
+
+</script>
+</div> {% endblock %}

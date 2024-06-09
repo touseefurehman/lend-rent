@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .checkout_total_price_h {
+        margin-left: auto; 
+        font-family: Poppins;
+        font-size: 28px;
+        font-weight: 600;
+        color: rgba(0, 84, 148, 1);
+    }
+    .home_link {
+        text-decoration: none; 
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(109, 109, 109, 1);
+    }
+    .popup {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+    .popup-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%;
+    }
+    .name_of_category_link {
+        text-decoration: none;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(109, 109, 109, 1);
+    }
+    .item_link {
+        text-decoration: none;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(109, 109, 109, 1);
+    }
+    .check_link {
+        text-decoration: none;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(0, 84, 148, 1)
+    }
+    .place_oder {
+        width: 100%;
+        background-color: rgba(0, 84, 148, 1); 
+        color: white;
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 700;
+    }
+</style>
+
+<div class="pagename">
+    <div class="container mt-4" style="display: flex;">
+        <div>
+            <p>
+                <a href="#" class="home_link">Home</a>
+                <i class="bi bi-chevron-right" style="color: rgba(109, 109, 109, 1);"></i>
+                <a href="{% url 'search_by_category' Category_of_items.id %}" class="name_of_category_link">{{Category_of_items.name}}</a>
+            </p>
+        </div>
+        <div>
+            <i class="bi bi-chevron-right" style="color: rgba(109, 109, 109, 1);"></i>
+            <a href="#" class="item_link">{{ rental_item.title|slice:":10" }}{% if rental_item.title|length > 15 %}...{% endif %}</a>
+        </div>
+        <div>
+            <i class="bi bi-chevron-right" style="color: rgba(109, 109, 109, 1);"></i>
+            <a href="#" class="check_link">Check out</a>
+        </div>
+    </div>
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="container form mb-5">
+        <div class="row too">
+            <div class="col-lg-8 col-md-12">
+                <h1 class="checkh1">Checkout</h1>
+                <div class="row  mt-3 "> 
+                    <div class="col-lg-6 col-md-12 " >
+                        <label for="id_username">Username:</label>
+                        <input type="text" name="username" class="input_checkout" style="padding: 8px; width: 100%;height: 50px;" required>
+                    </div>
+                    <div class="col-lg-6 col-md-12 " >
+                        <label for="id_username">Last Name:</label>
+                        <input type="text" name="Last_Name" style="width: 100%;height: 50px;padding: 8px;"required>
+                    </div>
+                </div>
+                <div class="row  mt-3 "> 
+                    <div class="col-lg-6 col-md-12 " >
+                        <label for="id_username">Email:</label>
+                        <input type="text" name="Email" style="width: 100%;height: 50px;padding: 8px;"required>
+                    </div>
+                    <div class="col-lg-6 col-md-12 " >
+                        <label for="id_username">Mobile_NUmber:</label>
+                        <input type="text" name="Mobile_NUmber" style="width: 100%;height: 50px;padding: 8px;"required>
+                    </div>
+                </div>
+                <div class="row  mt-3 "> 
+                    <div class="col-lg-6 col-md-12 " >
+                        <label for="id_username">Address:</label>
+                        <input type="text" name="address" style="width: 100%;height: 50px;padding: 8px;"required>
+                    </div>        
+                    <div class="col-lg-6 col-md-12" >
+                        <label for="id_username">country:</label>
+                        <input type="text" name="country" style="width: 100%;height: 50px;padding: 8px;"required>
+                    </div>
+                </div>
+                <label for="">Note to lender</label>
+                <textarea name="note_to_lender" style="width: 100%; height: 150px; border-radius: 12px;border: 1px solid #d4d4d4;"required></textarea>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="check_oder">
+                    <div class="check_box">
+                        <h1 style="word-break: break-all;">{{rental_item.title}}</h1>
+                        <h2 class="pt-2">{{Category_of_items.name}} in {{rental_item.location}}</h2>
+                        <div class="pt-5" style="display: flex; align-items: center;">
+                            <h3 id="dateRange">
+                                {{ fromDate }} to {{ toDate }}
+                            </h3>
+                        </div>
+                        <hr>
+                        <div style="display: flex; align-items: center;">
+                            <div style="display: flex;">
+                                <h2 id="price" style="font-size: medium;">${{rental_item.daily_price}} *</h2>
+                                
+                                <h2 style="font-size: medium;">{{days}} Days</h2> 
+                            </div>
+                            <h3   style="margin-left: auto;"> ${{total_price}}
+                            </h3>
+                        
+                            
+                        </div>
+                        <div>
+                            <div style="display: flex; align-items: center;">
+                                <h2 style="font-size: medium;">Services Charges</h2>
+                                <h3 style="margin-left: auto;">$0.00</h3>
+                            </div>
+                            <div>
+                                
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div style="display: flex; align-items: center;">
+                                <p>Total</p>
+                                <h6 id="totalPrice" class="checkout_total_price_h">${{total_price}}</h6>
+                            </div>
+                            <h2 style="float: right;">Have a promo code?</h2>
+                            <button class="place_oder btn" type="submit">Place Order</button>
+                            <p class="check_box" style="color: #969696;">By pressing "place order" you agree to the Terms of Use and other relevant policies.</p>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+
+
+
+
+
+
+                <!-- this is for getting the days from dates -->
+                <script>
+                    var fromDate = new Date("{{ fromDate }}");
+                    var toDate = new Date("{{ toDate }}");
+                
+                    // Calculate the difference in milliseconds
+                    var timeDiff = toDate.getTime() - fromDate.getTime();
+                
+                    // Calculate the number of days by dividing milliseconds by the number of milliseconds in a day
+                    var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                
+                    // Select the element where you want to display the number of days
+                    var daysCountElement = document.getElementById("daysCount");
+                
+                    // Update the content of the selected element with the number of days
+                    daysCountElement.textContent =  daysDiff;
+
+
+                    console.log(daysDiff);
+                    
+                    let price = document.getElementById("price");
+                    console.log(price);
+
+
+                </script>
+                <!-- JavaScript for calculating total price -->
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

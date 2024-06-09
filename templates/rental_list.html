@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="mt-5">
+      <h1>Rental</h1>
+      <hr>
+    </div>
+    <section class="category">
+      <div class="container camera_section2">
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+              <div>
+                <button class="custom1-button" id="viewAllBtn">Location selected by map</button>
+                <button class="custom1-button" id="viewAllBtn">Date</button>
+    
+                <button class="custom1-button" id="viewAllBtn">Category</button>
+              </div>
+           
+              <div>
+                      <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black; text-decoration: none;">Sort By: Default Order</a>
+                      <ul class="dropdown-menu" style="float: right;">
+                          <li><a class="dropdown-item" href="#">Sort Option 1</a></li>
+                          <li><a class="dropdown-item" href="#">Sort Option 2</a></li>
+                          <li><a class="dropdown-item" href="#">Sort Option 3</a></li>
+                      </ul>
+                  
+                  <img src="{% static 'image/nav/menu.png' %}" class="img" alt="Menu">
+                  <img src="{% static 'image/nav/dashboard.png' %}" class="img" alt="Dashboard">
+                  <img src="{% static 'image/nav/map-pin.png' %}" class="img" alt="Map Pin">
+              </div>
+          </div>
+      </div>
+    </section>
+    
+    </div>
+      
+
+    
+
+
+
+
+<div class="container">
+  <div class="row" style="padding-bottom: 100px; padding-top: 50px;">
+    <div class="col-lg-6 col-sm-12">
+
+      <div class="row">
+        <div class="col">
+            <div class="card border-0" >
+                <img src="{% static 'image/nav/unsplash_178j8tJrNlc.png' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text" style="font-family: Poppins; font-size:10px;font-weight: 500;text-align: left;">John Doe</p>
+                    <h5 style="font-family: Montserrat;font-size: 17px;font-weight: 600;text-align: left;color: rgba(38, 50, 56, 1);" class="card-title">SONY PXW-X200 Full Camera</h5>
+                    <div style="display: flex;">
+                        <p style="font-family: Poppins;
+                        font-size:10px;
+                        font-weight: 500;
+                        text-align: left;" class="card-text">Ohio St. 16 H. 435 South Gate, California</p>
+                    </div>
+                    <div style="display: flex; justify-content:space-between; " class="mt-4">
+                    
+                    <h5  style="font-weight: 800;" class="card-title">$350</h5>
+                    <div>                        <img src="{% static 'image/nav/star_rate.png' %}" class="img" alt="...">4.8
+                    </div>
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-0" >
+                <img src="{% static 'image/nav/unsplash_178j8tJrNlc.png' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text" style="font-family: Poppins; font-size:10px;font-weight: 500;text-align: left;">John Doe</p>
+                    <h5 style="font-family: Montserrat;
+                    font-size: 17px;
+                    font-weight: 600;
+                    text-align: left;
+                    color: rgba(38, 50, 56, 1);
+                    " class="card-title">SONY PXW-X200 Full Camera</h5>
+                    <div style="display: flex;">
+                        <p style="font-family: Poppins;
+                        font-size:10px;
+                        font-weight: 500;
+                        text-align: left;" class="card-text">Ohio St. 16 H. 435 South Gate, California</p>
+                    </div>
+                    <div style="display: flex; justify-content:space-between; " class="mt-4">
+                    <h5  style="font-weight: 800;" class="card-title">$350</h5>
+                    <div>                        <img src="{% static 'image/nav/star_rate.png' %}" class="img" alt="...">4.8
+                    </div>      
+                </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    <div class="col-lg-6 col-sm-12 ">
+        <div style="max-width: 500px;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54392.08654724467!2d74.33361684667969!3d31.56518552016197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39191c9dbf0ddeb1%3A0x13bfcdb10fb490de!2sBadshahi%20Mosque!5e0!3m2!1sen!2s!4v1713755396812!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div></div>
+  </div>
+</div>
+
+
+{% endblock %}

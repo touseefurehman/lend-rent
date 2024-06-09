@@ -1,0 +1,287 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rent and lend</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg  " style="position: fixed; width: 100%;top: 0;z-index: 10;background-color: white;">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'rent' %}">
+                <img src="{% static 'image/nav/Elephant Please.png' %}" alt="..">
+                <img src="{% static 'image/nav/elephant (1) 1 (Traced).png' %}" alt>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                  
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto gap-3" style="align-items: center;">
+                    <li class="nav-item">
+                        <a class="nav-link" href=" {% url 'signup' %}">
+                            <button class="btn inbox-button profile-button">
+                                <h1 class="profile-button-text">Sign up</h1>
+                            </button>
+                            
+                        </a>
+                    </li>
+                    <li><a class="nav-link" href=" {% url 'login_user' %}">
+                        <button class="btn inbox-button profile-button">
+                            <h1 class="profile-button-text">SIGNIN</h1>
+                        </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="mt-5 home-container11">
+                    <div class="headings">
+                        <p>Rent <span>Cameras</span> From <span>People</span> in Your Community</p>
+                    </div>
+                    <h6 class="home-text">Enjoy the item without the burden to</h6>
+                    <h6 class="home-text">own and at a fraction of the price.</h6>
+                    <section class="sss1" style="max-width: 700px;margin:auto;">
+                        <div class="container mt-5 sss1 search_section">
+                        
+                          <div class="input-group mt-5 sss1" style="max-width: 700px;margin: auto;">
+                            <input type="text" class="form-control sss1" placeholder="Search something..."
+                                   aria-label="Search something..." aria-describedby="search-btn">
+                            <div class="input-group-append">
+                              <button class="s1_button sss1" type="button" id="search-btn">Search</button>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </section>
+                </div>
+            </div>
+            <div class="col-md-5 home-col11">
+                <div class="display1 home-display"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sharethejoy home-share">
+            <div class="container mt-5 home-container">
+                <div class="row">
+                    <div class="col-sm text-center home-column">
+                        <img src="{% static 'image/nav/image 25.png' %}" class="img home-image" alt="Image 1">
+                        <div class="text-center home_ma">
+                            <h1 class="home-title">Share the Joy</h1>
+                            <h2 class="home-subtitle">grow closer</h2>
+                            <h2 class="home-subtitle">Take part in the community.</h2>
+                        </div>
+                    </div>
+                    <div class="col-sm text-center home-column">
+                        <img src="{% static 'image/nav/image 26.png' %}" class="img home-image" alt="Image 1">
+                        <div class="text-center home_ma">
+                            <h1 class="home-title">Save money</h1>
+                            <h2 class="home-subtitle">Buy less. Rent on demand for</h2>
+                            <h2 class="home-subtitle">fraction of the price.</h2>
+                        </div>
+                    </div>
+                    <div class="col-sm text-center home-column">
+                        <img src="{% static 'image/nav/image 27.png' %}" class="img home-image" alt="Image 1">
+                        <div class="text-center home_ma">
+                            <h1 class="home-title">Help the planet</h1>
+                            <h2 class="home-subtitle">Live greener. Reduce waste.</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center2">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="max-width-container">
+                        <h1 class="before_rental"><span class="rent-highlight">Rent</span> to Save and Be Green</h1>
+                        <div class="mt-2">
+                            <p class="rent-description">Elephant Please provides a secured online platform where you can
+                                enjoy a diverse range of items at an affordable price. Renting allows you to enjoy items
+                                without worrying about budgets and storage problems. Not to mention that you can try out
+                                different things without buying all of them; for example, rent different camera lenses
+                                to obtain various effects.</p>
+                            <h6 class="rent-heading"><b>How Renting Works</b></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="right_img_main">
+                        <img src="{% static 'image/nav/image 28.png' %}" alt="...">
+                    </div>
+                    <div class="bg_div"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 mt-5-container">
+            <div class="row roo">
+                <div class="col-lg-6 col-sm-12 mt-5">
+                    <div class="left_img_main">
+                        <img src="{% static 'image/nav/1122.png' %}" alt="...">
+                        <div class="bg_div"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="max-width-container">
+                        <h1 class="before_rental">Lend to start earning</h1>
+                        <div class="mt-2">
+                            <p class="rent-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem
+                                ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <a class="inbox-link" href="{% url 'Category' %}">
+                            <button class="btn inbox-button" id="editProfileButton">
+                                <h1 class="inbox-button-text">List and earn</h1>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ex" style="padding-top: 30px;">
+            <div>
+                <h1>Explore Item Categories</h1>
+         
+                <div class="container">
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <p class="custom-text1122">Hover and select to view items available to be rented. From Film & Photography to Drones to Clothes & Shoes. If you can think of it, you can find it.</p>
+                      </div>
+                      <div class="col-sm-12 col-md-6 d-flex justify-content-end align-items-center">
+                        <button type="button" class="custom-button1122 btn btn-outline-blue btn-lg">View All</button>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+        <div class="access access-container">
+            <div class="container">
+                <div class="access-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="access-text">
+                                <h1>Access on the go</h1>
+                                <p class="mt-4">Elephant Please is a responsive website, open it on any browser and use it on your devices. Rent more, save more. Lend more, earn more.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="{% static 'image/nav/2441 2.png' %}" class="card-img" alt="Image 1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+    </div>
+
+
+    <div class="container-fluid text-center rental-reviews" style="background: #ECF7FF; padding:50px; margin-top: 100px; margin-bottom: 100px;">
+        <h1 style="padding-top: 40px;">RENTAL REVIEWS</h1>
+        <p style="max-width: 400px; margin: auto; color: #666666;">To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.</p>
+        <div class="row">
+            <div class="col m-1 mt-2">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="{% static 'image/nav/girl.png' %}" alt="">
+                        <h1 class="asdf"><span class="review-name">Elina Doe </span><br> Happy client</h1>
+                    </div>
+                    <p class="mt-2 review-quote">“Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore laudantium totam rem aperiam, eaque ipsa quae ab”</p>
+                </div>
+            </div>
+            <div class="col m-1 mt-2">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="{% static 'image/nav/girl.png' %}" alt="">
+                        <h1 class="asdf"><span class="review-name">Elina Doe </span><br> Happy client</h1>
+                    </div>
+                    <p class="mt-2 review-quote">“Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore laudantium totam rem aperiam, eaque ipsa quae ab”</p>
+                </div>
+            </div>
+            <div class="col m-1 mt-2">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="{% static 'image/nav/girl.png' %}" alt="">
+                        <h1 class="asdf"><span class="review-name">Elina Doe </span><br> Happy client</h1>
+                    </div>
+                    <p class="mt-2 review-quote">“Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore laudantium totam rem aperiam, eaque ipsa quae ab”</p>
+                </div>
+            </div>
+            <div class="col m-1 mt-2">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="{% static 'image/nav/girl.png' %}" alt="">
+                        <h1 class="asdf"><span class="review-name">Elina Doe </span><br> Happy client</h1>
+                    </div>
+                    <p class="mt-2 review-quote">“Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore laudantium totam rem aperiam, eaque ipsa quae ab”</p>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    
+
+
+
+
+
+
+    <div class="container">
+        <div class="mt-5 text-center newsletter">
+            <h1 class="pal">Sign Up For Our Newsletter</h1>
+            <p class="mt-4 newsletter-info">Sign up to receive information about our special offers and news. You can unsubscribe at any time. For more details about how we use your information, view our <span class="privacy-policy">Privacy Policy.</span></p>
+        </div>
+        <div class="newsletter-form">
+            <div class="input-group mt-5" style="max-width: 800px; margin: auto;">
+                <input type="text" style="    border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                height: 80px;
+                box-shadow: 0px 19px 29px 0px #3E357824;
+                border: none;
+                padding-left: 40px;" class="form-control newsletter-input" placeholder="Email Address..." aria-label="Search something..." aria-describedby="search-btn">
+                <div class="input-group-append">
+                    <button class="s1_button" style="height: 80px;font-size: 16px;font-weight: 500;" type="button" id="search-btn">submit</button>
+                </div>
+            </div>  <p style="max-width: 550px;" class="text-center newsletter-disclaimer">We’ll never share your email with anyone else.</p>
+          
+        </div>
+    </div>
+    
+    
+    {% include 'components/footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

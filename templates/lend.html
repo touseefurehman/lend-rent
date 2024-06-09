@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container mt-4" style="display: flex;">
+        <div>
+            <p>
+                <a href="#" style="text-decoration: none; 
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(109, 109, 109, 1);
+
+            ">Home</a>
+        </div>
+        <div>
+            <i class="bi bi-chevron-right" style="color: rgba(109, 109, 109, 1);"></i>
+            <a href="#" style="text-decoration: none;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(0, 84, 148, 1)
+        ;">How lending Works</a>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="hero text-center p-2">
+            <h1 class="pt-5 ">Lend to start earning</h1>
+        <p></p>
+            <h6 style="max-width: 500px;margin: auto;" class="pb-5 pt-3 ">Rent a Camera from a fellow photographer in Hong Kong. Over 50%
+            Cheaper Than Traditional Rental Spend less & Enjoy more</h6>
+        </div>
+    </div>
+    <div class="lend_start mt-5">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div style="max-width: 500px;padding-bottom: 100px;">
+                        <h1 class="before_rental">Before the lending</h1>
+                        <div class="mt-2">
+                            <h2 class="para_before_rental">list an item: <span> Look around your home and Fill out a few
+                                    fields to describe your item. Take</span></h2>
+                            <h2 class="para_before_rental"> Update availability: <span>s Remember to update the dates
+                                    your item will not be available to allow users to have a better understanding of the
+                                    availability.</span></h2>
+                            <h2 class="para_before_rental"> Respond promptly: <span>Answer queries users may have to
+                                    increase the likelihood of a rental.</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="right_img_main">
+                        <img src="{% static 'image/nav/Bg (5).png' %}" alt="...">
+                        <div class="bg_div"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="lend_start mt-5">
+        <div class="container pt-5">
+            <div class="row roo">
+                <div class="col-lg-6 col-sm-12">
+
+                    <div class="left_img_main">
+                        <img src="{% static 'image/nav/Bg (6).png' %}" alt="...">
+                        <div class="bg_div"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div style="max-width: 500px; margin-left: auto;padding-bottom: 100px;">
+                        <h1 class="before_rental">When lending</h1>
+                        <div class="mt-2">
+                         
+                            <h2 class="para_before_rental"> Meet the user: <span> Arrange to meet the user to handover
+                                    the item.</span></h2>
+
+                                    <h2 class="para_before_rental">  Keep in touch:  <span>Arrange in advance for the return of the item. Contact Elephant Please if there are any issues.
+                                    </span></h2>
+
+                                        <h2 class="para_before_rental">Retrieve the item: <span>To avoid surcharges and penalties, return the item on time. Message the lender and request if you would like the item for a few more days.
+                                        </span></h2>
+                                            
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lend_start mt-5">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div style="max-width: 500px;padding-bottom: 100px;">
+                        <h1 class="before_rental">After lending</h1>
+                        <div class="mt-2">
+                            <h2 class="para_before_rental">Rate the user:  <span>Take this opportunity to review the user for other members of the community</span></h2>
+                            <h2 class="para_before_rental">Repeat: <span> List more items and earn more.</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="right_img_main">
+                        <img src="{% static 'image/nav/Bg (2).png' %}" alt="...">
+                        <div class="bg_div"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lend_start mt-5">
+        <div class="container pt-5">
+            <div class="row roo">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="left_img_main">
+                        <img src="{% static 'image/nav/Bg (4).png' %}" alt="...">
+                        <div class="bg_div"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div style="max-width: 500px;margin-left: auto;padding-bottom: 100px;">
+                        <h1 class="before_rental">Play your part</h1>
+                        <div class="mt-2">
+                            <h2 class="para_before_rental"><span>Renting on Elephant Please isn’t just convenient and cost-saving. By purchasing less and renting more, you’re also contributing to a circular economy, making better use of resources and helping to protect this wonderful planet we call home.</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div style="float: right;" class="mt-5">
+         
+               <a style="text-decoration: none;color: white;" href="{% url 'list_an_item' %}">
+        <button style="width:198px;height:60px;border-radius:16px;background:rgba(0, 84, 148, 1);" class="btn inbox-button" id="editProfileButton">
+            <h1 style="font-family:Poppins;color:white;font-size:18px;font-weight:600;margin:0;">
+                List and earn
+            </h1>
+        </button></a>
+        </div>
+    </div>
+    <div style="padding-top: 150px;">
+        
+        
+        
+        
+        
+        {% endblock %}

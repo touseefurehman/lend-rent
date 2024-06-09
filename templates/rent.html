@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+ {% load static %} 
+ {% block content %} 
+ <div class="container mt-4" style="display: flex;">
+    <div>
+        <p>
+            <a href="#" style="text-decoration: none; 
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(109, 109, 109, 1);
+
+            ">Home</a>
+    </div>
+    <div>
+        <i class="bi bi-chevron-right" style="color: rgba(109, 109, 109, 1);"></i>
+        <a href="#" style="text-decoration: none;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(0, 84, 148, 1)
+        ;">How Renting Works</a>
+        </p>
+    </div>
+</div>
+<div class="container">
+    <div class="hero text-center">
+        <h1 class="pt-5 ">Rent to save and be green</h1>
+        <h6 class="pt-3 ">Rent a Camera from a fellow photographer in Hong Kong. Over 50% </h6>
+        <h6 class="pb-5">Cheaper Than Traditional Rental Spend less & Enjoy more</h6>
+    </div>
+</div>
+<div class="lend_start mt-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <div style="max-width: 500px;padding-bottom: 100px;">
+                    <h1 class="before_rental">Before the rental</h1>
+                    <div class="mt-2">
+                        <h2 class="para_before_rental">Find an item: <span>search for the desired item and filter by
+                                category and location</span></h2>
+                        <h2 class="para_before_rental">request and wait: <span>send a reqquest to the lender and wait
+                                for the lender to comfirm your request</span></h2>
+                        <h2 class="para_before_rental">Arrange: <span>use the chat function to arrange a convenient
+                                time.</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="right_img_main">
+                    <img src="{% static 'image/nav/Bg.png' %}" alt="...">
+                    <div class="bg_div"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="lend_start mt-5">
+    <div class="container pt-5">
+        <div class="row roo">
+            <div class="col-lg-6 col-sm-12">
+                <div class="left_img_main">
+                    <img src="{% static 'image/nav/Bg (2).png' %}" alt="...">
+                    <div class="bg_div"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div style="max-width: 500px; margin-left: auto;padding-bottom: 100px;">
+                    <h1 class="before_rental">During the rental</h1>
+                    <div class="mt-2">
+                        <h2 class="para_before_rental">Enjoy your rental: <span>Make the most of your time with the
+                                item. Have fun!</span></h2>
+                        <h2 class="para_before_rental">Take good care: <span>Use and treat the item as you would if it
+                                were your own.</span></h2>
+                        <h2 class="para_before_rental">Return on time: <span>To avoid surcharges and penalties, return
+                                the item on time. Message the lender and request if you would like the item for a few
+                                more days.</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="lend_start mt-5">
+    <div class="container pt-5">
+        <div class="row ">
+            <div class="col-lg-6 col-sm-12">
+                <div style="max-width: 500px;padding-bottom: 100px;">
+                    <h1 class="before_rental">Before the rental</h1>
+                    <div class="mt-2">
+                        <h2 class="para_before_rental">Rate the lender: <span>Take this opportunity and review the
+                                lender for other members of the community.</span></h2>
+                        <h2 class="para_before_rental">Repeat: <span> Search and rent again!</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="right_img_main">
+                    <img src="{% static 'image/nav/Bg (2).png' %}" alt="...">
+                    <div class="bg_div"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="lend_start mt-5">
+    <div class="container pt-5">
+        <div class="row roo">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="left_img_main">
+                    <img src="{% static 'image/nav/Bg (4).png' %}" alt="...">
+                    <div class="bg_div"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div style="max-width: 500px;margin-left: auto;padding-bottom: 100px;">
+                    <h1 class="before_rental">Play your part</h1>
+                    <div class="mt-2">
+                        <h2 class="para_before_rental"><span> Renting on Elephant Please isn’t just convenient and
+                                cost-saving. By purchasing less and renting more, you’re also contributing to a circular
+                                economy, making better use of resources and helping to protect this wonderful planet we
+                                call home.</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div style="float: right;" class="mt-5">
+        <a style="text-decoration: none;color: white;" href="{% url 'Category' %}">
+            <button style="width:198px;height:60px;border-radius:16px;background:rgba(0, 84, 148, 1);"
+                class="btn inbox-button" id="editProfileButton">
+                <h1 style="font-family:Poppins;color:white;font-size:18px;font-weight:600;margin:0;"> Search and rent
+                </h1>
+            </button></a>
+    </div>
+</div>
+<div style="padding-top: 150px; height:40px ;"> {% endblock %}

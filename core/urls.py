@@ -9,7 +9,6 @@ from non_functional_pages import urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/' , include('accounts.urls'),name='accounts'),
-    path('chat/' , include('inbox.urls')),
     path('accounts/', include('allauth.urls')),
     path('items/',include('items.urls'),name='list_an_item'),
     path('items/',include('items.urls'),name='list_an_item'),
